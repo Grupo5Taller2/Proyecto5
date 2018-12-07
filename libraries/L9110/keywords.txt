@@ -1,0 +1,8 @@
+L9110	KEYWORD1
+adelante	KEYWORD2
+atras	KEYWORD2
+izquierda	KEYWORD2
+derecha	KEYWORD2
+frenar	KEYWORD2
+conducir	KEYWORD2
+

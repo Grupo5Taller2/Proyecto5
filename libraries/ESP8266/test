@@ -1,0 +1,72 @@
+
+/* TEST DE RECEPCION*/
+#include "ESP8266.h"
+#include <Arduino.h>
+
+#define SSID        "SistimeAntichoque"
+#define PASSWORD    "12345678"
+#define BAUDRATE    115200
+
+ESP8266 wifi(Serial);
+
+void setup(void)
+{
+    Serial.print("setup begin\r\n");
+    Serial.begin(BAUDRATE);
+    wifi.Configuration();
+   
+    
+    Serial.print("setup end\r\n");
+}
+ 
+void loop(void)
+{
+    //wifi.Comprobation();
+    uint8_t buffer[128] = {0};
+    uint32_t len = wifi.Receive_data(buffer);
+    if (len > 0) {
+        Serial.print("[");
+        for(uint32_t i = 0; i < len; i++) {
+            Serial.print((char)buffer[i]);
+        }
+        Serial.print("]\r\n");
+  
+    }
+    
+}
+
+/*_____________________________________________________________*/
+/* TEST DE envio*/
+
+
+#include "ESP8266.h"
+#include <Arduino.h>
+
+#define SSID        "SistimeAntichoque"
+#define PASSWORD    "12345678"
+#define BAUDRATE    115200
+
+ESP8266 wifi(Serial);
+
+void setup(void)
+{
+    Serial.print("setup begin\r\n");
+    Serial.begin(BAUDRATE);
+    wifi.Configuration();
+   
+    
+    Serial.print("setup end\r\n");
+}
+ 
+void loop(void)
+{
+   uint8_t mux_id; 
+    delay(2000);
+    //wifi.Comprobation();
+    uint8_t buffer[128] = "Marco";
+    wifi.Send_data(buffer, 5);
+     //wifi.send(mux_id, buffer, 5);
+    
+}
+
+/*_____________________________________________________________*/
