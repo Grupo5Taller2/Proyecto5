@@ -1,0 +1,65 @@
+.jumbotronHeader {
+	background-image: url("Fondo.jpg");
+	background-repeat: no-repeat; 	
+	background-size: cover;
+	height: 800px;
+	margin-top: -20px;
+}
+.jumbotron {
+    color: white;
+}
+
+body {
+
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: currentColor;
+
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #4378f2;
+    border: 0px solid #ddd;
+}
+
+.pageTitle {
+	color: white;
+	text-align: center;
+	margin-top: 140px;
+}
+
+
+.parTitle {
+	color: #2d7eff !important;
+	font-size: 35px !important;
+}
+
+.footer {
+	background-color: #101010;
+	color: white;
+	margin-bottom: 0px;
+}
+
+
+.footerImg {
+  padding: 15px;
+  border-radius: 30%;
+}
+
+.float-right {
+	padding-top: 20%;
+}
+
+.btn-dark{
+	background-color: #333 !important; 
+	color: white;
+}
+
+.btn-dark:hover{
+	color:grey !important;
+}

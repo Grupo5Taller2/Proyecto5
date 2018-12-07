@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Auto en Linea Recta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- JQuery -->
+    <script src="{{url_for('static', filename='jquery/jquery-3.2.1.min.js')}}"></script>       
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/index.js')}}"></script> 
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/control.js')}}"></script> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap3/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/index.css')}}" />
+
+    <!-- Bootstrap JS 
+    <script src="{{url_for('static', filename='bootstrap/js/popper.min.js')}}"></script>-->
+    <script src="{{url_for('static', filename='bootstrap3/js/bootstrap.min.js')}}"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Inicio</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+
+
+            <!--MENUUUUUU desplegiable -->
+           
+                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opciones <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                   
+                    <li><a href="/stats">Estadisticas</a></li>
+                    
+                    <li><a href="/connect">Conectarse</a></li>
+                    
+                    <li><a href="/logout">Desconectarse</a> </li>
+
+                    <li><a href="/faqs">FAQS</a></li>
+		  
+                  </ul>
+                </li>
+            
+            <!--MENUUUUUU desplegiable -->
+               
+            
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+        <div class="container">
+            
+            <div class="row justify-content-md-center">
+                <div class="col-md-6 col-md-offset-3 col-xs-12">
+                    <div style="background:transparent; margin-top:-25px" class="jumbotron jumbotron-fluid">
+                        <div class="container">
+
+                            {% if error %}
+                                <div class="alert alert-danger" style="text-align: center" id="error"> {{ error }}</div>
+                            {% elif inform %}   
+                                <div class="alert alert-success" style="text-align: center" id="error">{{ inform }}</div>
+                            {% endif %}
+
+                            <div class="container text-center" style="margin-top: -8px">
+                                <h2 class="parTitle"><strong>Controles y estado</strong></h2>
+                    
+                            </div>
+
+                            <br>
+                            
+                            <ul class="list-group">
+                                
+                                <li class="list-group-item"><b><span id="state">Estado: {{state}}</span></b></li>
+                                <li class="list-group-item"><b><span id="A_distance">Rueda A: {{A_distance}}RPM</span></b></li>
+                                <li class="list-group-item"><b><span id="B_distance">Rueda B: {{B_distance}}RPM</span></b></li>
+                            </ul> 
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-2 col-md-offset-3 col-xs-2" >
+                  <!--<a class="btn btn-danger btn-lg" role="button" onclick="control('Marcha D')">Marcha -</a> -->
+                </div>
+
+
+
+                <div class="col-md-2 col-md-offset-0 col-xs-2 col-xs-offset-2">
+                    <a class="btn btn-danger btn-lg" role="button" onclick="control('Frenar')">Frenar</a>
+                </div>
+
+
+                <div class="col-md-2 col-md-offset-0 col-xs-2 col-xs-offset-1">
+                  <!-- <a class="btn btn-danger btn-lg" role="button" onclick="control('Marcha A)">Marcha +</a> -->
+                </div>
+                
+            </div> 
+
+            <br>
+            <br>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-3 col-md-offset-5 col-xs-2 col-xs-offset-4">
+                    <a class="btn btn-success btn-lg" role="button" onclick="control('Avanzar')">Avanzar</a>
+                </div>
+            </div> 
+
+            <br>
+
+            <div class="row ">
+                <div class="col-md-3 col-md-offset-3 col-xs-2 ">
+                    <a class="btn btn-primary btn-lg" role="button" onclick="control('Izquierda')">Izquierda</a>
+                </div>
+                <div class="col-md-3 col-md-offset-1 col-xs-2 col-xs-offset-6">
+                    <a class="btn btn-primary btn-lg" role="button" onclick="control('Derecha')">Derecha</a>
+                </div>
+            </div> 
+
+            <br>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-3 col-md-offset-5 col-xs-2 col-xs-offset-4">
+                    <a class="btn btn-success btn-lg" role="button" onclick="control('Retroceder')">Retroceder</a>
+                </div>
+            </div> 
+        </div>
+   
+
+    <br>
+    <br>
+
+
+    <!--Apellidos de los autores con el año y el logo-->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-fluid footerImg" src="static/assets/AA.png" alt="Logo" height="90" width="100">
+                </div>
+                <div class="col-sm-2 col-sm-offset-8">
+                    <p class="float-right"><strong>Aguilar - Ailigo 2018</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>

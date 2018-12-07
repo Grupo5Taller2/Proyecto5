@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Auto En Linea Recta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- JQuery -->
+    <script src="{{url_for('static', filename='jquery/jquery-3.2.1.min.js')}}"></script>       
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/index.js')}}"></script> 
+    <script type="text/javascript" src="{{url_for('static', filename='scripts/control.js')}}"></script> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap3/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/index.css')}}" />
+
+    <!-- Bootstrap JS 
+    <script src="{{url_for('static', filename='bootstrap/js/popper.min.js')}}"></script>-->
+    <script src="{{url_for('static', filename='bootstrap3/js/bootstrap.min.js')}}"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Inicio</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+   
+    </nav>
+
+
+
+    <!-- Titulo de arriba sobre la imagen-->
+        <div class="jumbotron jumbotron-fluid jumbotronHeader">
+            <div class="container pageTitle">
+                <h1 class="parTitle"><strong>Auto en Linea Recta<strong></h1>
+                <p class="lead"><i><strong>Conduce aqui tu auto</strong></i></p>
+                <a href="/vista" class="btn btn-dark btn-lg" role="button" >Ingresar!!!!!!</a>
+            </div>
+        </div>
+
+    <br>
+    <br>
+
+
+    <!--Apellidos de los autores con el año y el logo-->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-fluid footerImg" src="static/assets/AA.png" alt="Logo" height="90" width="100">
+                </div>
+                <div class="col-sm-2 col-sm-offset-8">
+                    <p class="float-right"><strong>Aguilar - Ailigo 2018</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>

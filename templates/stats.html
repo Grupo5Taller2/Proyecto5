@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Auto en Linea Recta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- JQuery -->
+    <script src="{{url_for('static', filename='jquery/jquery-3.2.1.min.js')}}"></script>       
+    <!-- <script type="text/javascript" src="{{url_for('static', filename='scripts/stats.js')}}"></script> -->  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap3/css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheets/main.css')}}" />
+
+    <!-- Bootstrap JS -->
+    <script src="{{url_for('static', filename='bootstrap3/js/bootstrap.min.js')}}"></script>
+
+    
+</head>
+
+<body>
+    <!-- Barra -->  
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Inicio</a>
+        </div>
+
+<!-- menu desplegable -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opciones <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/vista">Control</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+
+ <!-- menu desplegable -->
+    </nav>
+    
+    <br>
+
+
+    <div class="container">
+
+        <div class="container text-center">
+            <h1 class="parTitle"><strong>Estadisticas</strong></h1>
+        </div>
+        <br>
+        <!-- Agregar ifs para que detecte la distancia y los pinte de verde, amarillo o rojo -->  
+        {% if eventos %}   
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="btn-dark"> 
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Desviacion</th>
+                            <th>Avance/Retroceso</th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+    <!-- Cuando accede a i.4 hace referencia a la distancia y les da el color-->  
+                    {% for i in eventos %}
+                        {% if i.5 > 50 %}
+                            <tr class="success">
+                        {% elif i.5 > 25 %}
+                            <tr class="warning">
+                        {% else %}
+                            <tr class="danger">
+                        {% endif %}
+
+       <!-- termina de asignar el color que les corressponde -->  
+                            <td><b>{{ i.1 }}</b></td>  <!-- es la fecha --> 
+                            <td><b>{{ i.2 }}</b></td>  <!-- es la hora --> 
+                            <td><b>{{ i.5 }} RPM </b></td>  <!-- es la desviacion--> 
+                            <td><b>{{ i.6 }}</b></td>  <!-- es avance/retroceso --> 
+                        </tr>                 
+                    {% endfor %}  
+    <!-- Termino de mostrar los nuevos valores -->     
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <br>
+            <br>
+            <div class="container text-center">
+            <h2 style="color:white;"><strong>No hay eventos disponibles</strong></h2>
+            <br>
+            <br>
+            <h4 style="color:white;"><strong><i>Conectese y utilice el autito para 
+            obtener estadisticas de uso</i></strong></h4>
+        </div>
+        {% endif %}    
+
+    </div>
+
+   
+   <!--Apellidos de los autores con el año y el logo-->
+    {% if eventos %}
+        <footer class="footer" style="margin-top: 10px">
+    {% else %}
+        <footer class="footer" style="margin-top: 230px">
+    {% endif %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="img-fluid footerImg" src="static/assets/AA.png" alt="Logo" height="90" width="100">
+                </div>
+                <div class="col-sm-2 col-sm-offset-8">
+                    <p class="float-right"><strong>Aguilar - Ailigo 2018</strong> </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
